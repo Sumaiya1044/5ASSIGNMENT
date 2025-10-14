@@ -3,7 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let coins = 100;
   let copyCount = 0;
 
-  
+  const heartCounter = document.getElementById('heart-count');
+  const coinCounter = document.getElementById('coin-count');
+  const copyCounter = document.getElementById('copy-count');
+  const historyList = document.getElementById('history-list');
+  const clearHistoryBtn = document.getElementById('clear-history');
 
 
   document.querySelectorAll('.heart-btn i').forEach(btn => {
