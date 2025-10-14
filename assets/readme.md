@@ -5,6 +5,7 @@ getElementsByClassName("class") selects all elements with a specific class, retu
 querySelector("selector") selects the first element that matches any CSS selector.
 querySelectorAll("selector") selects all elements matching a CSS selector, returning a static NodeList.
 
+
 2. How to create and insert a new element into the DOM?
 First, create the element using document.createElement("tag").
 Then, set its content or attributes using properties like textContent, innerHTML, or className.
