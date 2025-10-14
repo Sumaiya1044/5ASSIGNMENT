@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emergency Service Directory</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"/>
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family: Arial, sans-serif; background:#f0f4f5; color:#111; }
+
+  nav { display:flex; justify-content:space-between; align-items:center; padding:12px 20px; background:#0b6b4a; color:white; }
+  nav .left { display:flex; align-items:center; gap:10px; }
+  nav img { width:48px; height:48px; border-radius:6px; }
+  nav h1 { font-size:20px; }
+  nav ul { display:flex; gap:10px; list-style:none; }
+  nav li { display:flex; align-items:center; gap:5px; background:rgba(255,255,255,0.2); padding:5px 10px; border-radius:8px; cursor:pointer; }
+
+  section.banner { background:linear-gradient(135deg,#2e7d32,#81c784); color:white; text-align:center; padding:40px 10px; }
+  section.banner img { width:80px; margin-bottom:15px; }
+  section.banner h1 { font-size:28px; margin-bottom:6px; }
+  section.banner p { font-size:16px; opacity:0.9; }
+
+  main { display:grid; grid-template-columns:3fr 1fr; gap:20px; padding:20px; }
+  .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; }
+
+  .card { background:white; border-radius:10px; padding:15px; box-shadow:0 4px 12px rgba(0,0,0,0.08); display:flex; flex-direction:column; justify-content:space-between; transition:0.3s; }
+  .card:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.1); }
+
+  .card-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+  .card-header img { width:32px; height:32px; }
+  .heart-btn i { cursor:pointer; transition:0.2s; }
+  .heart-btn i:hover { transform:scale(1.2); }
+
+  .service-name { font-weight:bold; font-size:16px; margin-bottom:5px; }
+  .service-number { font-weight:bold; font-size:18px; margin-bottom:5px; }
+  .buttons { display:flex; gap:10px; justify-content:center; margin-top:10px; }
+  .btn { padding:8px 12px; border:none; border-radius:6px; cursor:pointer; font-weight:600; display:flex; align-items:center; gap:5px; }
+  .btn-copy { background:#fff3cd; border:1px solid #ffeeba; }
+  .btn-copy:hover { background:#ffeebb; }
+  .btn-call { background:#0b6b4a; color:white; }
+  .btn-call:hover { background:#065f3b; }
+
+  aside { background:white; padding:15px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+  aside h2 { font-size:18px; margin-bottom:10px; }
+  #history-list { max-height:400px; overflow:auto; }
+  .history-item { display:flex; justify-content:space-between; padding:8px; border-bottom:1px solid #eee; }
+
+  @media(max-width:1000px){ main { grid-template-columns:1fr; } .cards { grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); } }
+  @media(max-width:600px){ .card { height:auto; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="left">
+    <img src="assets/logo-dark.png" alt="Logo">
+    <h1>Emergency Service</h1>
+  </div>
+  <ul>
+    <li><span id="heart-count">0</span> <div class="heart-btn"><i class="fa-regular fa-heart"></i></div></li>
+    <li><span id="coin-count">100</span> <i class="fa-solid fa-coins"></i></li>
+    <li><span id="copy-count">0</span> Copy</li>
+  </ul>
+</nav>
+
+<section class="banner">
+  <img src="assets/logo.png" alt="Logo">
+  <h1>Emergency Service Directory</h1>
+  <p>Government Emergency Services at Your Fingertip – Bangladesh</p>
+</section>
+
+<main>
+  <section class="cards">
+  
+    <div class="card">
+      <div class="card-header">
+        <img src="assets/emergency.png" alt="">
+        <div class="heart-btn"><i class="fa-regular fa-heart"></i></div>
+      </div>
+      <div>
+        <div class="service-name">National Emergency Number</div>
+        <div class="service-number">999</div>
+      </div>
+      <div class="buttons">
+        <button class="btn btn-copy"><i class="fa-regular fa-copy"></i> Copy</button>
+        <button class="btn btn-call"><i class="fa-solid fa-phone"></i> Call</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <img src="assets/police.png" alt="">
+        <div class="heart-btn"><i class="fa-regular fa-heart"></i></div>
+      </div>
+      <div>
+        <div class="service-name">Police Helpline Number</div>  
+        <div class="service-number">999</div>
+      </div>
+      <div class="buttons">
+        <button class="btn btn-copy"><i class="fa-regular fa-copy"></i> Copy</button>
+        <button class="btn btn-call"><i class="fa-solid fa-phone"></i> Call</button>
+      </div>
+    </div>
+
+    
+
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <img src="assets/fire-service.png" alt="">
+        <div class="heart-btn"><i class="fa-regular fa-heart"></i></div>
+      </div>
+      <div>
+        <div class="service-name">fire-service</div>
+        <div class="service-number">999</div>
+      </div>
+      <div class="buttons">
+        <button class="btn btn-copy"><i class="fa-regular fa-copy"></i> Copy</button>
+        <button class="btn btn-call"><i class="fa-solid fa-phone"></i> Call</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <img src="assets/ambulance.png" alt="">
+        <div class="heart-btn"><i class="fa-regular fa-heart"></i></div>
+      </div>
+      <div>
+        <div class="service-name">Ambulance Service</div>
+        <div class="service-number">1994-999999</div>
+      </div>
+      <div class="buttons">
+        <button class="btn btn-copy"><i class="fa-regular fa-copy"></i> Copy</button>
+        <button class="btn btn-call"><i class="fa-solid fa-phone"></i> Call</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <img src="assets/emergency.png" alt="">
+        <div class="heart-btn"><i class="fa-regular fa-heart"></i></div>
+      </div>
+      <div>
+        <div class="service-name">Women & Child Helpline</div>
+        <div class="service-number">109</div>
+      </div>
+      <div class="buttons">
+        <button class="btn btn-copy"><i class="fa-regular fa-copy"></i> Copy</button>
+        <button class="btn btn-call"><i class="fa-solid fa-phone"></i> Call</button>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <div class="card-header">
+        <img src="assets/emergency.png" alt="">
+        <div class="heart-btn"><i class="fa-regular fa-heart"></i></div>
+      </div>
+      <div>
+        <div class="service-name">Anti-Corrupttion Helpline</div>
+        <div class="service-number">106</div>
+      </div>
+      <div class="buttons">
+        <button class="btn btn-copy"><i class="fa-regular fa-copy"></i> Copy</button>
+        <button class="btn btn-call"><i class="fa-solid fa-phone"></i> Call</button>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <div class="card-header">
+        <img src="assets/emergency.png" alt="">
+        <div class="heart-btn"><i class="fa-regular fa-heart"></i></div>
+      </div>
+      <div>
+        <div class="service-name">Electricity Helpline</div>
+        <div class="service-number">16216</div>
+      </div>
+      <div class="buttons">
+        <button class="btn btn-copy"><i class="fa-regular fa-copy"></i> Copy</button>
+        <button class="btn btn-call"><i class="fa-solid fa-phone"></i> Call</button>
+      </div>
+    </div>
+
+     <div class="card">
+      <div class="card-header">
+        <img src="assets/brac.png" alt="">
+        <div class="heart-btn"><i class="fa-regular fa-heart"></i></div>
+      </div>
+      <div>
+        <div class="service-name">brac</div>
+        <div class="service-number">16445</div>
+      </div>
+      <div class="buttons">
+        <button class="btn btn-copy"><i class="fa-regular fa-copy"></i> Copy</button>
+        <button class="btn btn-call"><i class="fa-solid fa-phone"></i> Call</button>
+      </div>
+    </div>
+
+  <div class="card">
+      <div class="card-header">
+        <img src="assets/emergency.png" alt="">
+        <div class="heart-btn"><i class="fa-regular fa-heart"></i></div>
+      </div>
+      <div>
+        <div class="service-name">Bangladesh Railway Helpline</div>
+        <div class="service-number">163</div>
+      </div>
+      <div class="buttons">
+        <button class="btn btn-copy"><i class="fa-regular fa-copy"></i> Copy</button>
+        <button class="btn btn-call"><i class="fa-solid fa-phone"></i> Call</button>
+      </div>
+    </div>
+
+    
+  </section>
+  <aside>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+      <h2>Call History</h2>
+      <button id="clear-history" class="btn btn-call">Clear</button>
+    </div>
+    <div id="history-list"></div>
+  </aside>
+</main>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  let heartCount = 0;
+  let coins = 100;
+  let copyCount = 0;
+
+  const heartCounter = document.getElementById('heart-count');
+  const coinCounter = document.getElementById('coin-count');
+  const copyCounter = document.getElementById('copy-count');
+  const historyList = document.getElementById('history-list');
+  const clearHistoryBtn = document.getElementById('clear-history');
+
+  
+document.querySelectorAll('.heart-btn i').forEach(btn => {
+  btn.addEventListener('click', () => {
+    
+    heartCount++;
+    heartCounter.textContent = heartCount;
+
+    
+    if (btn.classList.contains('fa-regular')) {
+      btn.classList.remove('fa-regular');
+      btn.classList.add('fa-solid');
+      btn.style.color = 'red';
+    } else {
+      btn.classList.remove('fa-solid');
+      btn.classList.add('fa-regular');
+      btn.style.color = '';
+    }
+  });
+});
+
+
+  document.querySelectorAll('.btn-copy').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.card');
+      const number = card.querySelector('.service-number').textContent;
+      navigator.clipboard.writeText(number)
+        .then(() => {
+          alert("Number Copied: " + number);
+          copyCount++;
+          copyCounter.textContent = copyCount;
+        })
+        .catch(() => {
+          alert("Failed to copy!");
+        });
+    });
+  });
+
+  
+  document.querySelectorAll('.btn-call').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.card');
+      const name = card.querySelector('.service-name').textContent;
+      const number = card.querySelector('.service-number').textContent;
+
+      if(coins < 20){
+        alert("Not enough coins to make a call!");
+        return;
+      }
+
+      coins -= 20;
+      coinCounter.textContent = coins;
+      alert(`Calling ${name}: ${number}`);
+
+      const time = new Date().toLocaleTimeString();
+      const newItem = document.createElement('div');
+      newItem.className = 'history-item';
+      newItem.innerHTML = `<span>${name}: ${number}</span> <span>${time}</span>`;
+      historyList.appendChild(newItem);
+    });
+  });
+
+
+  clearHistoryBtn.addEventListener('click', () => {
+    if (confirm("Are you sure you want to clear history?")) {
+      historyList.innerHTML = '';
+    }
+  });
+});
+</script>
+
+</body>
+</html>
