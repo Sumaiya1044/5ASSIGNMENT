@@ -238,6 +238,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const historyList = document.getElementById('history-list');
   const clearHistoryBtn = document.getElementById('clear-history');
 
+
+
   
 document.querySelectorAll('.heart-btn i').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -300,13 +302,7 @@ document.querySelectorAll('.heart-btn i').forEach(btn => {
   });
 
  
-  clearHistoryBtn.addEventListener('click', () => {
-    if (confirm("Are you sure you want to clear history?")) {
-      historyList.innerHTML = '';
-    }
-  });
-});
-</script>
+ 
 
 </body>
 </html>
